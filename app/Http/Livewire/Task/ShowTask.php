@@ -34,6 +34,12 @@ class ShowTask extends Component
         $this->emitTo('task.task-list', 'refreshList');
     }
 
+    public function complete()
+    {
+        $this->task->is_completed = true;
+        $this->task->save();
+    }
+
     public function render()
     {
         return view('livewire.task.show-task', [

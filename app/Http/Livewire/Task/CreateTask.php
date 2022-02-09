@@ -28,6 +28,8 @@ class CreateTask extends Component
             'priority' => $this->priority
         ]);
 
+        $this->emitTo('task.task-list', 'refreshList');
+
         $this->reset();
     }
 

@@ -1,4 +1,5 @@
 <div x-data="{ showForm: false }">
+    <x-error for="title"></x-error>
     <form x-show="showForm"
           class="relative"
           style="display: none"
@@ -8,11 +9,17 @@
             <label for="title" class="sr-only">Title</label>
             <input type="text" name="title" id="title" class="block w-full border-0 pt-2.5 text-lg font-medium placeholder-gray-500 focus:ring-0" placeholder="Title" wire:model.defer="title">
             <label for="description" class="sr-only">Description</label>
-            <textarea rows="2" name="description" id="description" wire:model.defer="description" class="block w-full border-0 py-0 resize-none placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="Write a description..."></textarea>
+            <textarea rows="2"
+                      x-data="{ resize: () => { $el.style.height = '5px'; $el.style.height = $el.scrollHeight + 'px' } }"
+                      x-init="resize()"
+                      @input="resize()"
+                      name="description"
+                      id="description" wire:model.defer="description"
+                      class="block w-full border-0 py-4 resize-none placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="Write a description..."></textarea>
 
             <div class="mt-3">
                 <div class="py-2">
-                    <div class="h-9 mt-3 px-3">
+                    <div class="h-9 mt-3 px-3 space-x-2">
                         @foreach([0 => 'Low', 1 => 'Mid', 2 => 'High', 3 => 'Highest'] as $key => $prio)
                             @if ($priority === $key)
                                 <div class="inline-flex items-center px-3 py-2 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600">
@@ -40,7 +47,6 @@
         </div>
 
         <div class="absolute bottom-0 inset-x-px">
-            <x-error for="title"></x-error>
             <div class="border-t border-gray-200 px-2 py-2 flex justify-between items-center space-x-3 sm:px-3">
                 <div class="flex-shrink-0">
                     <button type="button"
