@@ -18,8 +18,8 @@ class CreateTasksTable extends Migration
             $table->foreignId('user_id');
             $table->string('title');
             $table->string('description')->nullable();
-            $table->string('status')->default('pending');
             $table->integer('priority')->default(0);
+            $table->boolean('is_completed')->default(false);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

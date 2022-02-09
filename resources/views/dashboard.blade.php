@@ -5,7 +5,8 @@
         </div>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-12 space-y-4">
+        <livewire:task.task-list />
         <livewire:task.create-task />
     </div>
 </x-dashboard>
