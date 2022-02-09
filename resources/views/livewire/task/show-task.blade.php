@@ -7,7 +7,7 @@
         <div class="px-4 py-4 sm:px-6">
             <div class="flex items-center justify-between">
                 <div class="flex">
-                    @if($task->is_completed)
+                    @if($task->completed_at)
                         <x-icon type="circle-check" class="text-green-600"></x-icon>
                     @else
                         <button type="button" wire:click="complete">

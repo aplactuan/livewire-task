@@ -36,8 +36,9 @@ class ShowTask extends Component
 
     public function complete()
     {
-        $this->task->is_completed = true;
+        $this->task->completed_at = now();
         $this->task->save();
+        $this->emitTo('task.task-list', 'refreshList');
     }
 
     public function render()

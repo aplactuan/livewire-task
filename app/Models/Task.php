@@ -16,6 +16,20 @@ class Task extends Model
       'priority'
     ];
 
+    public $dates = [
+        'completed_at'
+    ];
+
+    public function scopeCompleted($query)
+    {
+        return $query->whereNotNull('completed_at');
+    }
+
+    public function scopePending($query)
+    {
+        return $query->whereNull('completed_at');
+    }
+
     public function owner()
     {
         return $this->belongsTo(User::class, 'user_id');
