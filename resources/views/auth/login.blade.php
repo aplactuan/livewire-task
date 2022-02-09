@@ -1,10 +1,6 @@
 <x-guest-layout>
     <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -12,14 +8,14 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login') }}" class="space-y-6">
             @csrf
 
             <!-- Email Address -->
             <div>
-                <x-label for="email" :value="__('Email')" />
+                <x-label for="email" :value="__('Email')" class="block text-sm font-medium text-gray-700" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-input id="email" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
             <!-- Password -->
