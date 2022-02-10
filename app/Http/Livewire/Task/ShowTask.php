@@ -26,6 +26,7 @@ class ShowTask extends Component
         $this->validate();
 
         $this->task->save();
+        $this->emitTo('task.task-list', 'refreshList');
     }
 
     public function delete()
